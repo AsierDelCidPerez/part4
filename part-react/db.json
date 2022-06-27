@@ -1,0 +1,66 @@
+{
+  "notes": [
+    {
+      "id": 1,
+      "content": "HTML is easy",
+      "date": "2022-1-17T17:30:31.098Z",
+      "important": false
+    },
+    {
+      "id": 2,
+      "content": "Browser can execute only JavaScript",
+      "date": "2022-1-17T18:39:34.091Z",
+      "important": false
+    },
+    {
+      "id": 3,
+      "content": "GET and POST are the most important methods of HTTP protocol",
+      "date": "2022-1-17T19:20:14.298Z",
+      "important": false
+    },
+    {
+      "content": "una nueva niota",
+      "date": "Thu Jun 16 2022 20:19:12 GMT+0200 (hora de verano de Europa central)",
+      "important": false,
+      "id": 4
+    },
+    {
+      "content": "Mi nueva nota",
+      "date": "Thu Jun 16 2022 20:56:53 GMT+0200 (hora de verano de Europa central)",
+      "important": false,
+      "id": 5
+    }
+  ],
+  "persons": [
+    {
+      "name": "Arturo Hellas",
+      "number": "963258714",
+      "id": 1
+    },
+    {
+      "name": "Miguel Bon Fernández",
+      "number": "456329871",
+      "id": 2
+    },
+    {
+      "name": "Isabel Liutetario",
+      "number": "963251478",
+      "id": 3
+    },
+    {
+      "name": "Pedro Manuel",
+      "number": "145296387",
+      "id": 4
+    },
+    {
+      "name": "Juan Díaz",
+      "number": "852143697",
+      "id": 5
+    },
+    {
+      "name": "Enmanuel",
+      "number": "852316497",
+      "id": 6
+    }
+  ]
+}
