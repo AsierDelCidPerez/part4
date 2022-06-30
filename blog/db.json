@@ -1,0 +1,46 @@
+{
+  "blog": [
+    {
+      "id": 1,
+      "title": "Superpotencias de la IA",
+      "author": "Kai Fuu Lee",
+      "url": "https://www.amazon.es/dp/8423431312/",
+      "likes": 127
+    },
+    {
+      "id": 2,
+      "title": "El programador pragmático",
+      "author": "Andrew Hunt",
+      "url": "https://www.amazon.es/dp/B09X5R1GLL/",
+      "likes": 278
+    },
+    {
+      "id": 3,
+      "title": "Historia de la informática",
+      "author": "Manuel Llaca",
+      "url": "https://www.amazon.es/dp/8419197335",
+      "likes": 149
+    },
+    {
+      "title": "Organización y arquitectura de los computadores",
+      "author": "William Staling",
+      "url": "https://www.amazon.es/dp/8489660824/",
+      "likes": "682",
+      "id": 4
+    },
+    {
+      "title": "C/C++ Manuales imprescindibles",
+      "author": "Anaya",
+      "url": "https://www.amazon.es/dp/8441539375/",
+      "likes": "78",
+      "id": 5
+    },
+    {
+      "title": "Mi libro",
+      "author": "Asier",
+      "url": "https://www.amazon.es/dp/8441539375/",
+      "likes": "25",
+      "id": 6
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+const express = require('express')
+const app = express()
+const cors = require('cors')
+const config = require('./utils/config')
+const mongoose = require('mongoose')
+const logger = require('./utils/logger')
+const notesRouter = require('./controllers/notes')
+const {errorHandler, unknownEndpoint} = require('./utils/middleware')
+
+logger.info(`connecting to ${config.PORT}`)
+
+mongoose.connect(config.MONGODB_URI)
+        .then(() => logger.info('Connected to MONGODB'))
+        .catch(err => logger.error(`Error connecting to MongoDB: ${err.message}`))
+
+app.use(express.json())
+app.use(cors()) // Permite conexiones cruzadas, es decir de diferentes dominios
+app.use(express.static('build'))
+
+app.use('/api/notes', notesRouter)
+
+app.use(unknownEndpoint)
+app.use(errorHandler)
+
+module.exports = app
