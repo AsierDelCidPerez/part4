@@ -20,7 +20,7 @@ notesRouter.put('/:id', (request, response, next) => {
         .catch(err => next(err))
 })
 
-notesRouter.post('/', (request, response) => {
+notesRouter.post('/', async (request, response) => {
     const body = request.body
     if(!body.content) return response.status(400).json({error: 'Content missing'})
     const note = new Note({
@@ -28,20 +28,11 @@ notesRouter.post('/', (request, response) => {
         date: new Date(),
         important: body.important || false
     })
-    note.save()
-        .then(noteSaved => noteSaved.toJSON())
-        .then(formatedNote => response.json(formatedNote))
-        .catch(err => next(err))
+    response.json(await note.save())
 })
 
-notesRouter.get('/', (request, response) => {
-    Note.find({}).then(res => response.json(res))
-})
+notesRouter.get('/', async (request, response) => response.json(await Note.find({})))
 
-notesRouter.get('/:id', (request, response, next) => {
-    Note.findById(request.params.id).then(res => {
-        response.json(res)
-    }).catch(err => next(err))
-})
+notesRouter.get('/:id', async (request, response, next) => response.json(await Note.findById(request.params.id)))
 
 module.exports = notesRouter
