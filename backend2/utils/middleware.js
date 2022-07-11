@@ -2,7 +2,7 @@ const logger = require("./logger")
 
 const errorHandler = (error, request, response, next) => {
     console.log(error)
-    if(error.name === 'ValidationError') logger.info(`Error de validación: ${error.message}`)
+    if(error.name === 'ValidationError') response.status(400).end()
     next(error)
 }
 

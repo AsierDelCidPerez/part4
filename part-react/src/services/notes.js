@@ -10,7 +10,9 @@ const getAll = () => {
     }
     return axios.get(baseUrl).then(response => response.data.concat(nonExisting))
 }
-const create = newObject => axios.post(baseUrl, newObject).then(response => response.data)
+const create = (newObject, notification) => axios.post(baseUrl, newObject).then(response => response.data).catch(err => {
+    notification({})
+})
 const update = (id, newObject) => axios.put(`${baseUrl}/${id}`, newObject).then(response => response.data)
 
 const exported = {getAll, create, update}

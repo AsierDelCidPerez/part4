@@ -1,23 +1,16 @@
 const blogRouter = require('express').Router()
 const Blog = require('../model/blog')
 
-blogRouter.get('/', (request, response) => {
-    Blog.find({}).then(blog => response.json(blog))
+blogRouter.get('/', async(_, response) => response.json(await Blog.find({})))
+
+blogRouter.get('/:id', async(request, response) => response.json(await Blog.findById(request.params.id)))
+
+blogRouter.delete('/:id', async(request, response) => {
+    await Blog.findByIdAndRemove(request.params.id)
+    response.status(204).end()
 })
 
-blogRouter.get('/:id', (request, response, next) => {
-    Blog.findById(request.params.id)
-    .then(blog => response.json(blog))
-    .catch(err => next(err))
-})
-
-blogRouter.delete('/:id', (request, response, next) => {
-    Blog.findByIdAndRemove(request.params.id)
-    .then(response.status(204).end())
-    .catch(err => next(err))
-})
-
-blogRouter.put('/:id', (request, response, next) => {
+blogRouter.put('/:id', async(request, response) => {
     const body = request.body
     const newBlog = {
         title: body.title,
@@ -25,24 +18,22 @@ blogRouter.put('/:id', (request, response, next) => {
         url: body.url,
         likes: body.likes
     }
-    Blog.findByIdAndUpdate(request.params.id, newBlog, {new: true})
-    .then(updatedNote => response.json(updatedNote))
-    .catch(err => next(err))
+    response.json(await Blog.findByIdAndUpdate(request.params.id, newBlog, {new: true}))
+
 })
 
-blogRouter.post('/', (request, response, next) => {
+blogRouter.post('/', async(request, response) => {
     const body = request.body
-
-    const blog = new Blog({
-        title: body.title,
-        author: body.author,
-        url: body.url,
-        likes: body.likes
-    })
-
-    blog.save()
-    .then(createdBlog => response.json(createdBlog))
-    .catch(err => next(err))
+    if(!body.author && !body.title) response.status(400).end()
+    else{
+        const blog = new Blog({
+            title: body.title,
+            author: body.author,
+            url: body.url,
+            likes: !body.likes ? "0": Number.parseInt(body.likes)
+        })
+        response.json(await blog.save())
+    }
 })
 
 module.exports = blogRouter
