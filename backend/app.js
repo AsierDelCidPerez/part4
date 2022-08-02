@@ -5,6 +5,7 @@ const config = require('./utils/config')
 const mongoose = require('mongoose')
 require('express-async-errors')
 const logger = require('./utils/logger')
+const userRouter = require('./controllers/users')
 const notesRouter = require('./controllers/notes')
 const {errorHandler, unknownEndpoint} = require('./utils/middleware')
 
@@ -19,6 +20,7 @@ app.use(cors()) // Permite conexiones cruzadas, es decir de diferentes dominios
 app.use(express.static('build'))
 
 app.use('/api/notes', notesRouter)
+app.use('/api/users', userRouter)
 
 app.use(unknownEndpoint)
 app.use(errorHandler)
