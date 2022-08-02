@@ -36,16 +36,17 @@ describe('adding notes', () => {
         expect(notes).toHaveLength(initialNotes.length)
     })
     
-    test('a valid note can be added', async() => {
+/*    test('a valid note can be added', async() => {
         const newNote = {
             content: "async/await simlifies the code",
             date: new Date(),
-            important: false
+            important: false,
+            userId: 
         }
         await api.post('/api/notes').send(newNote).expect(200).expect('Content-Type', /application\/json/)
         const contents = (await helper.getNotes()).map(r => r.content)
         expect(contents.map(r => r.content)).toHaveLength(initialNotes.length +1)
-    })
+    })*/
 })
 
 describe('deleting note', () => {
