@@ -21,6 +21,13 @@ const initialBlogs = [
     }
 ]
 
+
+const newUser = {
+    username: "root",
+    password: "root",
+    name: "Global Administrator"
+}
+
 module.exports = {
-    initialBlogs
+    initialBlogs, newUser
 }
